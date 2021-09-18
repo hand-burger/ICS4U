@@ -13,6 +13,7 @@ int main()
 
     cout << a << endl;
 
+    // Repeat as long as the current number is less than the upper bound inputted
     while (currentFib < upperBound)
     {
         cout << currentFib << endl;
