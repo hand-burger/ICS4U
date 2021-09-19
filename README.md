@@ -1,2 +1,2 @@
 # ICS4U
- Grade 12 Computer Science problem solutions
+ Grade 12 Computer Science project solutions
