@@ -1,6 +1,8 @@
 #include <iostream>
 #include <map>
 #include <fstream>
+#include <cctype>
+#include <cstring>
 
 using namespace std;
 
@@ -68,10 +70,15 @@ int main()
             if (textString == it->first)
             {
                 cout << it->second;
-                cout << " ";
+            }
+            if (text[i] == ' ')
+            {
+                cout << ' ';
+                break;
             }
         }
     }
+    cout << endl;
 
     return 0;
 }
