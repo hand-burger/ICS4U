@@ -58,6 +58,9 @@ int main()
     rot_13["x"] = "k";
     rot_13["y"] = "l";
     rot_13["z"] = "m";
+
+    // Can't forget the capitals!
+
     rot_13["A"] = "N";
     rot_13["B"] = "O";
     rot_13["C"] = "P";
