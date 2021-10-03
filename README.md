@@ -10,7 +10,7 @@
 
 ## External File Use
 4. Decode the file named source.txt which has been shared with you via Google drive. It is encoded using a ROT13 encryption. The text itself is an excerpt from a novel. Submit your code, the decrypted text and the name of the source novel. [`complete`](src/ROT13.cpp)
-5. Create a text-based adventure/RPG game and implement a save/load game feature. For 70%,the program should save/load to/from a specific external file. For +30%, allow the user to specify the filename of the file to load/save.
+5. Create a text-based adventure/RPG game and implement a save/load game feature. For 70%, the program should save/load to/from a specific external file. For +30%, allow the user to specify the filename of the file to load/save.
 
 ## Sorting
 6. Create a program that implements a Cocktail Shaker Sort on a data set of 10 elements. Ex: Allow for the user to enter values. EX2: Allow the user to specify the number of elements they would like to include in the data set.
