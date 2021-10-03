@@ -58,6 +58,32 @@ int main()
     rot_13["x"] = "k";
     rot_13["y"] = "l";
     rot_13["z"] = "m";
+    rot_13["A"] = "N";
+    rot_13["B"] = "O";
+    rot_13["C"] = "P";
+    rot_13["D"] = "Q";
+    rot_13["E"] = "R";
+    rot_13["F"] = "S";
+    rot_13["G"] = "T";
+    rot_13["H"] = "U";
+    rot_13["I"] = "V";
+    rot_13["J"] = "W";
+    rot_13["K"] = "X";
+    rot_13["L"] = "Y";
+    rot_13["M"] = "Z";
+    rot_13["N"] = "A";
+    rot_13["O"] = "B";
+    rot_13["P"] = "C";
+    rot_13["Q"] = "D";
+    rot_13["R"] = "E";
+    rot_13["S"] = "F";
+    rot_13["T"] = "G";
+    rot_13["U"] = "H";
+    rot_13["V"] = "I";
+    rot_13["W"] = "K";
+    rot_13["X"] = "K";
+    rot_13["Y"] = "L";
+    rot_13["Z"] = "M";
 
     // Iterate over each element of the map looking for pairs
 
