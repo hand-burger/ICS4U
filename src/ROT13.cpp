@@ -1,16 +1,20 @@
 #include <iostream>
 #include <map>
 #include <fstream>
-#include <algorithm>
-#include <string>
 
 using namespace std;
 
 int main()
 {
+    // Separate text for reading and using, read reads each line to add to text
+
     string text, readText;
 
+    // Open source.txt
+
     ifstream fin("source.txt");
+
+    // Loop over each line to add to the whole text
 
     while (getline(fin, readText))
     {
@@ -18,7 +22,11 @@ int main()
         text += " ";
     }
 
+    // Print whole text from file
+
     cout << text << endl;
+
+    // Map for each key and value
 
     map<string, string> rot_13;
 
@@ -49,26 +57,19 @@ int main()
     rot_13["y"] = "l";
     rot_13["z"] = "m";
 
-    string a = "a";
+    // Iterate over each element of the map looking for pairs
 
-    // map<string, string>::iterator it = rot_13.find(a);
-    // cout << "key found " << it->second << endl;
-
-    for (map<string, string>::iterator it = rot_13.begin(); it != rot_13.end(); it++)
+    for (int i = 0; i <= text.length(); i++)
     {
-        // cout << it->first << " == " << it->second << endl;
-
-        for (int i = 0; i <= text.length(); i++)
+        for (map<string, string>::iterator it = rot_13.begin(); it != rot_13.end(); it++)
         {
-            // cout << text[i] << endl;
-            // cout << it->first << endl;
             string textString = string(1, text[i]);
 
             if (textString == it->first)
             {
                 cout << it->second;
+                cout << " ";
             }
-            // cout << it->first << it->second << endl;
         }
     }
 
