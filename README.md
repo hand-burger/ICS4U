@@ -1,5 +1,5 @@
 # ICS4U
- Grade 12 Computer Science projects solutions
+ Grade 12 Computer Science intro projects solutions
 
 [Mr. Varsava project list](http://mrvarsava.weebly.com/ics4u-project-list.html)
 
