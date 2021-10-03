@@ -9,7 +9,7 @@
 3. Create a program that generates the Fibonacci sequence up to a given value specified by the user i.e input = 20, output = 1,1,2,3,5,8,13. [`complete`](src/fibonacci.cpp)
 
 ## External File Use
-4. Decode the file named source.txt which has been shared with you via Google drive. It is encoded using a ROT13 encryption. The text itself is an excerpt from a novel. Submit your code, the decrypted text and the name of the source novel. `Working on it`
+4. Decode the file named source.txt which has been shared with you via Google drive. It is encoded using a ROT13 encryption. The text itself is an excerpt from a novel. Submit your code, the decrypted text and the name of the source novel. [`complete`](src/ROT13.cpp)
 5. Create a text-based adventure/RPG game and implement a save/load game feature. For 70%,the program should save/load to/from a specific external file. For +30%, allow the user to specify the filename of the file to load/save.
 
 ## Sorting
