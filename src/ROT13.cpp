@@ -59,6 +59,8 @@ int main()
     rot_13["y"] = "l";
     rot_13["z"] = "m";
 
+    rot_13[" "] = " ";
+
     // Can't forget the capitals!
 
     rot_13["A"] = "N";
@@ -88,10 +90,11 @@ int main()
     rot_13["Y"] = "L";
     rot_13["Z"] = "M";
 
-    // Iterate over each element of the map looking for pairs
-
     for (int i = 0; i <= text.length(); i++)
     {
+
+        // Iterate over each element of the map looking for pairs
+
         for (map<string, string>::iterator it = rot_13.begin(); it != rot_13.end(); it++)
         {
             string textString = string(1, text[i]);
@@ -99,11 +102,6 @@ int main()
             if (textString == it->first)
             {
                 cout << it->second;
-            }
-            if (text[i] == ' ')
-            {
-                cout << ' ';
-                break;
             }
         }
     }

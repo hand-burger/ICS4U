@@ -10,6 +10,9 @@ print(str(coefficients[0]) + 'x^3+(' + str(coefficients[1]) +
 
 # Get factors
 
+x1 = 'None'
+x2 = 'None'
+
 
 def factorize(num):
     return [n for n in range(1, num + 1) if num % n == 0]
@@ -42,6 +45,8 @@ p_over_qs.pop(0)
 for i in range(len(p_over_qs)):
     p_over_qs.append(p_over_qs[i] * -1)
 
+print('P/q values:', p_over_qs)
+
 
 for i in p_over_qs:
     # Factor theory (valid factor (x-k), iff p(k) = 0)
@@ -64,21 +69,18 @@ for i in p_over_qs:
         discriminant = synthetic2**2-4*synthetic1*synthetic3
 
         if discriminant < 0:
-            print("This quadratic has no real solution")
+            print("The quadratic has no real solution")
         elif discriminant == 0:
             x = (-synthetic2 + math.sqrt(synthetic2**2 - 4 *
                  synthetic1*synthetic3)) / (2 * synthetic1)
-            print("This quadratic has one solutions: ", x)
+            print("The quadratic has one solutions: ", x)
         else:
             x1 = (-synthetic2 + math.sqrt(synthetic2**2 - 4 *
                   synthetic1*synthetic3)) / (2 * synthetic1)
             x2 = (-synthetic2 - math.sqrt(synthetic2**2 - 4 *
                   synthetic1*synthetic3)) / (2 * synthetic1)
-            print("This quadratic has two solutions: ", x1, " and", x2)
+            print("The quadratic has two solutions: ", x1, " and", x2)
 
         print('The roots are ' + str(x1) + ', ' + str(x2) + ', ' + str(i))
 
-        break
-    else:
-        print('No root found using p and q')
         break
