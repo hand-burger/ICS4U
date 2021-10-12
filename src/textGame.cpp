@@ -1,14 +1,23 @@
 #include <iostream>
 #include <fstream>
-#include <unistd.h> // For sleep
+#include <cmath>
 
 using namespace std;
 
 int main()
 {
     string saveFile, saveText, readText;
+    bool newFile;
+    int xPos, yPos;
+    float boardX, boardY;
 
-    cout << "Enter name of previous save file or create a new one: ";
+    cout << "\n||||||||||||||||||||||||||||||||" << endl;
+    cout << "||                            ||" << endl;
+    cout << "|| WELCOME TO SHIT TEXT GAME! ||" << endl;
+    cout << "||                            ||" << endl;
+    cout << "||||||||||||||||||||||||||||||||" << endl;
+
+    cout << "\nEnter the name of previous save file or create a new one: ";
     cin >> saveFile;
 
     saveFile += ".txt";
@@ -26,9 +35,9 @@ int main()
 
     if (saveText == "")
     {
+        newFile = true;
         cout << "Creating new save file " << saveFile << " . . .\n";
         ofstream fout(saveFile);
-        fout << saveFile;
         cout << "File created\n";
     }
 
@@ -41,16 +50,48 @@ int main()
     readText = "";
     saveText = "";
 
-    // Read file
+    // Draw initial board
 
-    while (getline(newFin, readText))
+    boardX = 9;
+    boardY = 9;
+
+    // Get middle for starting pos
+
+    if (newFile)
     {
-        saveText += readText;
+        xPos = ceil(boardX / 2) - 1;
+        yPos = ceil(boardY / 2) - 1;
+    }
+    else
+    {
+        getline(newFin, readText);
+        xPos = stoi(readText);
+        getline(newFin, readText);
+        yPos = stoi(readText);
     }
 
-    cout << saveText << endl;
+    cout << endl;
 
-    fin.close();
+    // Draw board
+
+    for (int i = 0; i < boardY; i++)
+    {
+        for (int j = 0; j < boardX; j++)
+        {
+            // If on starting pos, draw XX.
+            if (i == yPos && j == xPos)
+            {
+                cout << "|XX|";
+            }
+            else
+            {
+                cout << "|::|";
+            }
+        }
+        cout << endl;
+    }
+
+        fin.close();
 
     return 0;
 }
