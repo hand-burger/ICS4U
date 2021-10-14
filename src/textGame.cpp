@@ -91,7 +91,7 @@ int main()
         cout << endl;
     }
 
-        fin.close();
+    fin.close();
 
     return 0;
 }
