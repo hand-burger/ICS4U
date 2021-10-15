@@ -4,6 +4,11 @@
 
 using namespace std;
 
+void clearConsole()
+{
+    printf("\033c");
+}
+
 int main()
 {
     string saveFile, saveText, readText;
