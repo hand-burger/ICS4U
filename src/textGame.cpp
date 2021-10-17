@@ -9,10 +9,69 @@ void clearConsole()
     printf("\033c");
 }
 
+void drawBoard(int boardY, int boardX, int yPos, int xPos)
+{
+    for (int i = 0; i < boardY; i++)
+    {
+        for (int j = 0; j < boardX; j++)
+        {
+            // If on starting pos, draw XX.
+            if (i == yPos && j == xPos)
+            {
+                cout << "|XX|";
+            }
+            else
+            {
+                cout << "|::|";
+            }
+        }
+        cout << endl;
+    }
+    cout << endl;
+}
+
+char direction(char direct)
+{
+    cin >> direct;
+
+    return direct;
+}
+
+void move(char direct, int boardY, int boardX, int yPos, int xPos)
+{
+    if (direct == 'U')
+    {
+        yPos--;
+    }
+    else if (direct == 'D')
+    {
+        yPos++;
+    }
+    else if (direct == 'L')
+    {
+        xPos--;
+    }
+    else if (direct == 'R')
+    {
+        xPos++;
+    }
+
+    // cout << xPos << yPos;
+
+    clearConsole();
+
+    cout << endl
+         << endl;
+
+    drawBoard(boardY, boardX, yPos, xPos);
+}
+
 int main()
 {
     string saveFile, saveText, readText;
+    char direct;
     bool newFile;
+    bool win = false;
     int xPos, yPos;
     float boardX, boardY;
 
@@ -57,6 +116,8 @@ int main()
 
     // Draw initial board
 
+    // Size of board
+
     boardX = 9;
     boardY = 9;
 
@@ -79,21 +140,21 @@ int main()
 
     // Draw board
 
-    for (int i = 0; i < boardY; i++)
+    drawBoard(boardY, boardX, yPos, xPos);
+
+    // Game loop
+
+    while (!win)
     {
-        for (int j = 0; j < boardX; j++)
+        // Get input direction
+
+        direct = direction(direct);
+        move(direct, boardY, boardX, yPos, xPos);
+
+        if (direct == 's')
         {
-            // If on starting pos, draw XX.
-            if (i == yPos && j == xPos)
-            {
-                cout << "|XX|";
-            }
-            else
-            {
-                cout << "|::|";
-            }
+            break;
         }
-        cout << endl;
     }
 
     fin.close();
