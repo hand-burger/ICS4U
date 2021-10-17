@@ -11,6 +11,22 @@ void clearConsole()
     cout << "\033c";
 }
 
+void save(string saveFile, int pos[], bool inventory[])
+{
+    ofstream file(saveFile);
+    file << pos[0] << "\n";
+    file << pos[1] << "\n";
+    for (int i = 0; i < 5; i++)
+    {
+        file << inventory[i];
+        if (i != 4)
+        {
+            file << "\n";
+        }
+    }
+    cout << "Progress saved to " << saveFile << endl;
+}
+
 void drawBoard(int boardY, int boardX, int pos[])
 {
     for (int i = 0; i < boardY; i++)
@@ -64,16 +80,36 @@ void position(int pos[], int objects[5][2], bool inventory[])
 
             if (stringPos == stringObj)
             {
-                cout << "You found object " << i + 1 << " bozo";
-                inventory[i] = true;
+                if (i == 0 && !inventory[i])
+                {
+                    cout << "You found the key to unlock Don's dungeon.\n";
+                    inventory[i] = true;
+                }
+                else if (i == 1 && !inventory[i])
+                {
+                    cout << "You found the key to unlock James' dungeon, he is forever grateful.\n";
+                    inventory[i] = true;
+                }
+                else if (i == 2 && !inventory[i])
+                {
+                    cout << "You found the key to unlock Thor's dungeon, too bad he already picked the lock.\n";
+                    inventory[i] = true;
+                }
+                else if (i == 3 && !inventory[i])
+                {
+                    cout << "You found the key to unlock Mark's dungeon, cool.\n";
+                    inventory[i] = true;
+                }
+                else if (i == 4 && !inventory[i])
+                {
+                    cout << "You found the key to unlock Toms's dungeon, neat.\n";
+                    inventory[i] = true;
+                }
             }
 
             stringObj = "";
         }
-        cout << " ";
     }
-
-    cout << endl;
 }
 
 int *move(char direct, int boardY, int boardX, int pos[], int objects[5][2], bool inventory[])
@@ -116,14 +152,16 @@ int main()
     float boardX, boardY;
     bool inventory[5] = {false, false, false, false, false};
 
-    cout << "\n||||||||||||||||||||||||||||||||" << endl;
-    cout << "||                            ||" << endl;
-    cout << "|| WELCOME TO SHIT TEXT GAME! ||" << endl;
-    cout << "||                            ||" << endl;
-    cout << "||||||||||||||||||||||||||||||||" << endl;
+    cout << "\n|||||||||||||||||||||||||||||" << endl;
+    cout << "||                         ||" << endl;
+    cout << "||     DUNGEON FREEDOM     ||" << endl;
+    cout << "||                         ||" << endl;
+    cout << "|||||||||||||||||||||||||||||" << endl;
 
     cout << "\nEnter the name of previous save file or create a new one: ";
     cin >> saveFile;
+
+    clearConsole();
 
     saveFile += ".txt";
 
@@ -145,6 +183,12 @@ int main()
         ofstream fout(saveFile);
         cout << "File created\n";
     }
+
+    // Controls
+
+    cout << "To move around, use the U, D, L & R keys to move Up, Down, Left & Right respectively.\n";
+    cout << "Around the map there are 5 keys which you must collect to free each of your friends from their dungeons\n";
+    cout << "If you want to quit at anytime, use the 's' key to save your progress.\n";
 
     // Read the new file
 
@@ -207,7 +251,7 @@ int main()
             {
                 inventory[i] = true;
             }
-                }
+        }
     }
 
     cout << endl;
@@ -227,20 +271,25 @@ int main()
 
         if (direct == 's')
         {
-            ofstream file(saveFile);
-            file << pos[0] << "\n";
-            file << pos[1] << "\n";
-            for (int i = 0; i < 5; i++)
-            {
-                file << inventory[i];
-                if (i != 4)
-                {
-                    file << "\n";
-                }
-            }
-
+            save(saveFile, pos, inventory);
             break;
         }
+        for (int i = 0; i < 5; i++)
+        {
+            if (!inventory[i])
+            {
+                break;
+            }
+            else if (i == 4)
+            {
+                win = true;
+            }
+        }
+    }
+    if (win)
+    {
+        save(saveFile, pos, inventory);
+        cout << "\nNice work, you found all the keys and all your friends are free and safe, for now atleast. . .\n";
     }
 
     fin.close();
