@@ -39,7 +39,7 @@ char direction(char direct)
     return direct;
 }
 
-void position(int pos[], int objects[5][2])
+void position(int pos[], int objects[5][2], bool inventory[])
 {
     cout << "(" << pos[0] << ", " << pos[1] << ")" << endl;
 
@@ -59,15 +59,16 @@ void position(int pos[], int objects[5][2])
         {
             // cout << objects[i][j];
             stringObj += to_string(objects[i][j]);
-            stringObj += to_string(objects[i][j + 1]);
+            j++;
+            stringObj += to_string(objects[i][j]);
 
             if (stringPos == stringObj)
             {
-                cout << "You found it bozo";
+                cout << "You found object " << i + 1 << " bozo";
+                inventory[i] = true;
             }
 
             stringObj = "";
-            j++;
         }
         cout << " ";
     }
@@ -75,7 +76,7 @@ void position(int pos[], int objects[5][2])
     cout << endl;
 }
 
-int *move(char direct, int boardY, int boardX, int pos[], int objects[5][2])
+int *move(char direct, int boardY, int boardX, int pos[], int objects[5][2], bool inventory[])
 {
     if (direct == 'U' && pos[1] > 0)
     {
@@ -96,13 +97,10 @@ int *move(char direct, int boardY, int boardX, int pos[], int objects[5][2])
 
     clearConsole();
 
-    cout << pos[0] << pos[1];
-
-    cout << endl
-         << endl;
+    cout << endl;
 
     drawBoard(boardY, boardX, pos);
-    position(pos, objects);
+    position(pos, objects, inventory);
 
     return pos;
 }
@@ -116,6 +114,7 @@ int main()
     int pos[2] = {};
     int objects[5][2] = {};
     float boardX, boardY;
+    bool inventory[5] = {false, false, false, false, false};
 
     cout << "\n||||||||||||||||||||||||||||||||" << endl;
     cout << "||                            ||" << endl;
@@ -180,6 +179,16 @@ int main()
     {
         pos[0] = ceil(boardX / 2) - 1;
         pos[1] = ceil(boardY / 2) - 1;
+        ofstream newFin(saveFile);
+
+        // Initialize new file
+        newFin << pos[0] << "\n";
+        newFin << pos[1] << "\n";
+        newFin << "0\n";
+        newFin << "0\n";
+        newFin << "0\n";
+        newFin << "0\n";
+        newFin << "0";
     }
     else
     {
@@ -187,6 +196,18 @@ int main()
         pos[0] = stoi(readText);
         getline(newFin, readText);
         pos[1] = stoi(readText);
+        for (int i = 0; i < 5; i++)
+        {
+            getline(newFin, readText);
+            if (readText == "0")
+            {
+                inventory[i] = false;
+            }
+            else if (readText == "1")
+            {
+                inventory[i] = true;
+            }
+                }
     }
 
     cout << endl;
@@ -202,10 +223,22 @@ int main()
         // Get input direction
 
         direct = direction(direct);
-        move(direct, boardY, boardX, pos, objects);
+        move(direct, boardY, boardX, pos, objects, inventory);
 
         if (direct == 's')
         {
+            ofstream file(saveFile);
+            file << pos[0] << "\n";
+            file << pos[1] << "\n";
+            for (int i = 0; i < 5; i++)
+            {
+                file << inventory[i];
+                if (i != 4)
+                {
+                    file << "\n";
+                }
+            }
+
             break;
         }
     }
