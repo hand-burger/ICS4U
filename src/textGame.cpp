@@ -201,7 +201,7 @@ int main()
 
     // Controls and story
 
-    cout << "You and the boys decideded to spend your guys night exploring an 'abandonned' asylum, what could go wrong?\n";
+    cout << "You and the boys decided to spend your guys night exploring an 'abandonned' asylum, what could go wrong?\n";
     cout << "While you're in this crazy house a group of humanoid figures capture you and your group, which isn't good.\n";
     cout << "They knock you out and lock you in dungeons, because of course there are dungeons in an asylum.\n";
     cout << "Obviously you have your lock picking set on you and you get out of your dungeon, and naturally the lock pick snaps in the keyhole.\n";

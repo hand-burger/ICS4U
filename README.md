@@ -17,7 +17,7 @@ Grade 12 Computer Science intro projects solutions
 
 ## Sorting
 
-6. Create a program that implements a Cocktail Shaker Sort on a data set of 10 elements. Ex: Allow for the user to enter values. EX2: Allow the user to specify the number of elements they would like to include in the data set.
+6. Create a program that implements a Cocktail Shaker Sort on a data set of 10 elements. Ex: Allow for the user to enter values. EX2: Allow the user to specify the number of elements they would like to include in the data set. `working on it`
 
 ## Computer Vision
 
