@@ -6,10 +6,12 @@ using namespace std;
 
 void clearConsole()
 {
-    printf("\033c");
+    // Might not work on windows
+
+    cout << "\033c";
 }
 
-void drawBoard(int boardY, int boardX, int yPos, int xPos, int pos[])
+void drawBoard(int boardY, int boardX, int pos[])
 {
     for (int i = 0; i < boardY; i++)
     {
@@ -37,7 +39,43 @@ char direction(char direct)
     return direct;
 }
 
-int *move(char direct, int boardY, int boardX, int yPos, int xPos, int pos[])
+void position(int pos[], int objects[5][2])
+{
+    cout << "(" << pos[0] << ", " << pos[1] << ")" << endl;
+
+    string stringPos;
+    string stringObj;
+
+    for (int i = 0; i < 2; i++)
+    {
+        stringPos += to_string(pos[i]);
+    }
+
+    cout << endl;
+
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 2; j++)
+        {
+            // cout << objects[i][j];
+            stringObj += to_string(objects[i][j]);
+            stringObj += to_string(objects[i][j + 1]);
+
+            if (stringPos == stringObj)
+            {
+                cout << "You found it bozo";
+            }
+
+            stringObj = "";
+            j++;
+        }
+        cout << " ";
+    }
+
+    cout << endl;
+}
+
+int *move(char direct, int boardY, int boardX, int pos[], int objects[5][2])
 {
     if (direct == 'U' && pos[1] > 0)
     {
@@ -63,7 +101,8 @@ int *move(char direct, int boardY, int boardX, int yPos, int xPos, int pos[])
     cout << endl
          << endl;
 
-    drawBoard(boardY, boardX, yPos, xPos, pos);
+    drawBoard(boardY, boardX, pos);
+    position(pos, objects);
 
     return pos;
 }
@@ -74,8 +113,8 @@ int main()
     char direct;
     bool newFile;
     bool win = false;
-    int xPos, yPos;
     int pos[2] = {};
+    int objects[5][2] = {};
     float boardX, boardY;
 
     cout << "\n||||||||||||||||||||||||||||||||" << endl;
@@ -117,35 +156,44 @@ int main()
     readText = "";
     saveText = "";
 
-    // Draw initial board
-
     // Size of board
 
     boardX = 9;
     boardY = 9;
+
+    // Position of objects, relative to board size (comments for pos on 9x9 board)
+
+    objects[0][0] = boardX - 2; // (7,1)
+    objects[0][1] = boardY - (boardY - 1);
+    objects[1][0] = ceil(boardX / 3) - 1; // (2, 5)
+    objects[1][1] = ceil(boardY / 2);
+    objects[2][0] = 0; // (0, 0)
+    objects[2][1] = 0;
+    objects[3][0] = ceil(sqrt(boardX)); // (3, 8)
+    objects[3][1] = boardY - 1;
+    objects[4][0] = ceil(boardX / 2); // (5, 5)
+    objects[4][1] = ceil(boardY / 2);
 
     // Get middle for starting pos
 
     if (newFile)
     {
         pos[0] = ceil(boardX / 2) - 1;
-        xPos = ceil(boardX / 2) - 1;
         pos[1] = ceil(boardY / 2) - 1;
-        yPos = ceil(boardY / 2) - 1;
     }
     else
     {
         getline(newFin, readText);
-        xPos = stoi(readText);
+        pos[0] = stoi(readText);
         getline(newFin, readText);
-        yPos = stoi(readText);
+        pos[1] = stoi(readText);
     }
 
     cout << endl;
 
-    // Draw board
+    // Draw initial board
 
-    drawBoard(boardY, boardX, yPos, xPos, pos);
+    drawBoard(boardY, boardX, pos);
 
     // Game loop
 
@@ -154,7 +202,7 @@ int main()
         // Get input direction
 
         direct = direction(direct);
-        move(direct, boardY, boardX, yPos, xPos, pos);
+        move(direct, boardY, boardX, pos, objects);
 
         if (direct == 's')
         {
