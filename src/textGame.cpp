@@ -9,14 +9,14 @@ void clearConsole()
     printf("\033c");
 }
 
-void drawBoard(int boardY, int boardX, int yPos, int xPos)
+void drawBoard(int boardY, int boardX, int yPos, int xPos, int pos[])
 {
     for (int i = 0; i < boardY; i++)
     {
         for (int j = 0; j < boardX; j++)
         {
             // If on starting pos, draw XX.
-            if (i == yPos && j == xPos)
+            if (i == pos[1] && j == pos[0])
             {
                 cout << "|XX|";
             }
@@ -37,33 +37,35 @@ char direction(char direct)
     return direct;
 }
 
-void move(char direct, int boardY, int boardX, int yPos, int xPos)
+int *move(char direct, int boardY, int boardX, int yPos, int xPos, int pos[])
 {
-    if (direct == 'U')
+    if (direct == 'U' && pos[1] > 0)
     {
-        yPos--;
+        pos[1]--;
     }
-    else if (direct == 'D')
+    else if (direct == 'D' && pos[1] < boardY - 1)
     {
-        yPos++;
+        pos[1]++;
     }
-    else if (direct == 'L')
+    else if (direct == 'L' && pos[0] > 0)
     {
-        xPos--;
+        pos[0]--;
     }
-    else if (direct == 'R')
+    else if (direct == 'R' && pos[0] < boardX - 1)
     {
-        xPos++;
+        pos[0]++;
     }
-
-    // cout << xPos << yPos;
 
     clearConsole();
+
+    cout << pos[0] << pos[1];
 
     cout << endl
          << endl;
 
-    drawBoard(boardY, boardX, yPos, xPos);
+    drawBoard(boardY, boardX, yPos, xPos, pos);
+
+    return pos;
 }
 
 int main()
@@ -73,6 +75,7 @@ int main()
     bool newFile;
     bool win = false;
     int xPos, yPos;
+    int pos[2] = {};
     float boardX, boardY;
 
     cout << "\n||||||||||||||||||||||||||||||||" << endl;
@@ -125,7 +128,9 @@ int main()
 
     if (newFile)
     {
+        pos[0] = ceil(boardX / 2) - 1;
         xPos = ceil(boardX / 2) - 1;
+        pos[1] = ceil(boardY / 2) - 1;
         yPos = ceil(boardY / 2) - 1;
     }
     else
@@ -140,7 +145,7 @@ int main()
 
     // Draw board
 
-    drawBoard(boardY, boardX, yPos, xPos);
+    drawBoard(boardY, boardX, yPos, xPos, pos);
 
     // Game loop
 
@@ -149,7 +154,7 @@ int main()
         // Get input direction
 
         direct = direction(direct);
-        move(direct, boardY, boardX, yPos, xPos);
+        move(direct, boardY, boardX, yPos, xPos, pos);
 
         if (direct == 's')
         {
