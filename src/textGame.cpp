@@ -6,19 +6,21 @@ using namespace std;
 
 void clearConsole()
 {
-    // Might not work on windows
+    // Might not work on windows, idk.
 
     cout << "\033c";
 }
 
 void save(string saveFile, int pos[], bool inventory[])
 {
+    // Open file and write the x and y pos and the inventory
     ofstream file(saveFile);
     file << pos[0] << "\n";
     file << pos[1] << "\n";
     for (int i = 0; i < 5; i++)
     {
         file << inventory[i];
+        // If on the last line don't put a newline
         if (i != 4)
         {
             file << "\n";
@@ -29,6 +31,8 @@ void save(string saveFile, int pos[], bool inventory[])
 
 void drawBoard(int boardY, int boardX, int pos[])
 {
+    // Take in the defined size of the board (Which can be modified and you already know the position of the objects scales to the size)
+    // and draw the board, using the pos to mark current position with |XX|
     for (int i = 0; i < boardY; i++)
     {
         for (int j = 0; j < boardX; j++)
@@ -50,6 +54,8 @@ void drawBoard(int boardY, int boardX, int pos[])
 
 char direction(char direct)
 {
+    // Get the direction and return it.
+
     cin >> direct;
 
     return direct;
@@ -57,11 +63,14 @@ char direction(char direct)
 
 void position(int pos[], int objects[5][2], bool inventory[])
 {
-    cout << "(" << pos[0] << ", " << pos[1] << ")" << endl;
-
+    // For comparing position to objects
     string stringPos;
     string stringObj;
 
+    // Print current position (x, y)
+    cout << "(" << pos[0] << ", " << pos[1] << ")" << endl;
+
+    // Get pos as string
     for (int i = 0; i < 2; i++)
     {
         stringPos += to_string(pos[i]);
@@ -73,13 +82,15 @@ void position(int pos[], int objects[5][2], bool inventory[])
     {
         for (int j = 0; j < 2; j++)
         {
-            // cout << objects[i][j];
+            // Get objects as string
             stringObj += to_string(objects[i][j]);
             j++;
             stringObj += to_string(objects[i][j]);
 
+            // Compare pos as objs
             if (stringPos == stringObj)
             {
+                // When a match is found, check which one and print it, oh and it it to the inventory
                 if (i == 0 && !inventory[i])
                 {
                     cout << "You found the key to unlock Don's dungeon.\n";
@@ -107,6 +118,7 @@ void position(int pos[], int objects[5][2], bool inventory[])
                 }
             }
 
+            // Clear string obj after each loop or it'll just add it on
             stringObj = "";
         }
     }
@@ -114,6 +126,8 @@ void position(int pos[], int objects[5][2], bool inventory[])
 
 int *move(char direct, int boardY, int boardX, int pos[], int objects[5][2], bool inventory[])
 {
+    // Take in the direction and change the position
+    // Also has collision detection so it doesn't go out of bounds
     if (direct == 'U' && pos[1] > 0)
     {
         pos[1]--;
@@ -135,6 +149,7 @@ int *move(char direct, int boardY, int boardX, int pos[], int objects[5][2], boo
 
     cout << endl;
 
+    // After getting to change in position, draw the board again and check & compare position
     drawBoard(boardY, boardX, pos);
     position(pos, objects, inventory);
 
@@ -184,8 +199,13 @@ int main()
         cout << "File created\n";
     }
 
-    // Controls
+    // Controls and story
 
+    cout << "You and the boys decideded to spend your guys night exploring an 'abandonned' asylum, what could go wrong?\n";
+    cout << "While you're in this crazy house a group of humanoid figures capture you and your group, which isn't good.\n";
+    cout << "They knock you out and lock you in dungeons, because of course there are dungeons in an asylum.\n";
+    cout << "Obviously you have your lock picking set on you and you get out of your dungeon, and naturally the lock pick snaps in the keyhole.\n";
+    cout << "So now the guys are trapped, forced to endure whatever skinwalker torture that is planned for them. . . Unless?\n\n";
     cout << "To move around, use the U, D, L & R keys to move Up, Down, Left & Right respectively.\n";
     cout << "Around the map there are 5 keys which you must collect to free each of your friends from their dungeons\n";
     cout << "If you want to quit at anytime, use the 's' key to save your progress.\n";
@@ -199,7 +219,7 @@ int main()
     readText = "";
     saveText = "";
 
-    // Size of board
+    // Size of board, can change
 
     boardX = 9;
     boardY = 9;
@@ -225,7 +245,7 @@ int main()
         pos[1] = ceil(boardY / 2) - 1;
         ofstream newFin(saveFile);
 
-        // Initialize new file
+        // Initialize new file with pos and inventory
         newFin << pos[0] << "\n";
         newFin << pos[1] << "\n";
         newFin << "0\n";
@@ -236,6 +256,7 @@ int main()
     }
     else
     {
+        // When file already exists, read the pos and inventory
         getline(newFin, readText);
         pos[0] = stoi(readText);
         getline(newFin, readText);
@@ -269,11 +290,15 @@ int main()
         direct = direction(direct);
         move(direct, boardY, boardX, pos, objects, inventory);
 
+        // If save, save.
+
         if (direct == 's')
         {
             save(saveFile, pos, inventory);
             break;
         }
+        // Check for win (loop over each inventory element and if any of them are false, break
+        // otherwise check if the loop can complete which means all are true)
         for (int i = 0; i < 5; i++)
         {
             if (!inventory[i])
