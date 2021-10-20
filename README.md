@@ -25,6 +25,6 @@ Grade 12 Computer Science intro projects solutions
 
 8. ~~Create a computer vision project of your own design. Potential ideas include something that recognizes your face, a hand-gesture interpreter, or a Where's Waldo solver.~~ Do this for summative project if possible.
 
-### Summative Project
+## Summative Project
 
 [Details here](http://mrvarsava.weebly.com/uploads/1/4/8/7/14872890/ics34summative.pdf)
