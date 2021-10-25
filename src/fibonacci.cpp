@@ -6,7 +6,7 @@ int main()
 {
     int upperBound;
 
-    int a = 1, b = 1, currentFib = 1;
+    int a = 0, b = 1, currentFib = 1;
 
     cout << "Enter the upper bound for the fibonacci sequence: ";
     cin >> upperBound;
