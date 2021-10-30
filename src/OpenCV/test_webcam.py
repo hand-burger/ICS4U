@@ -9,8 +9,11 @@ if not cap.isOpened():
 
 while True:
     ret, frame = cap.read()
+
+    # Get the frame from the webcam
     frame = cv2.resize(frame, None, fx=0.5, fy=0.5,
                        interpolation=cv2.INTER_AREA)
+    # Display the frame
     cv2.imshow('Input', frame)
 
     c = cv2.waitKey(1)
