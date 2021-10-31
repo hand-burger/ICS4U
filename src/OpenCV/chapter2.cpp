@@ -17,7 +17,7 @@ int main()
     Mat imgGray, imgBlur, imgCanny, imgDia, imgErode;
 
     cvtColor(img, imgGray, COLOR_BGR2GRAY);
-    GaussianBlur(img, imgBlur, Size(3, 3), 3, 0);
+    GaussianBlur(imgGray, imgBlur, Size(3, 3), 3, 0);
     Canny(imgBlur, imgCanny, 25, 75);
 
     // Creates kernel for dilation or erosion
