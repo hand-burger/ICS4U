@@ -9,7 +9,7 @@
 using namespace cv;
 using namespace std;
 
-// Face Detection \\
+// Number Plate Detection \\
 
 int main()
 {
