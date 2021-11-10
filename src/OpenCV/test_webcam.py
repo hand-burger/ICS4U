@@ -1,4 +1,4 @@
-import cv2  # OpenCV
+import cv2  # OpenCv
 
 cap = cv2.VideoCapture(0)
 
