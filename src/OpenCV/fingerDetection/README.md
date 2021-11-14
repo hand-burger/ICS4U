@@ -25,7 +25,8 @@ Once isolated, the hand is again blurred, thresholded, the edges are detected us
 
 ```c++
 // Pre-process and find the contours of the foreground mask
-GaussianBlur(fgMask, fgMask, Size(27, 27), 3.5, 3.5); threshold(fgMask, fgMask, thresh, maxVal, type);
+GaussianBlur(fgMask, fgMask, Size(27, 27), 3.5, 3.5);
+threshold(fgMask, fgMask, thresh, maxVal, type);
 Canny(fgMask, imgCanny, value, value * 2, 3);
 findContours(fgMask, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE, Point(0, 0));
 ```
@@ -44,6 +45,12 @@ for (int i = 0; i < contours.size(); i++)
         sizeOfBiggestContour = contours[i].size(); indexOfBiggestContour = i;
     }
 }
+```
+
+```c++
+// Get convex hulls and convexity defects of hand (fingers)
+convexHull(contours[i], hull[i], true);
+convexityDefects(contours[i], hull[i], defects[i]);
 ```
 
 Now looping through each defect, the number of fingers can be calculated
