@@ -167,8 +167,8 @@ void track(int, void *)
                     putText(imgMirror, a, Point(75, 420), FONT_HERSHEY_SIMPLEX, 3, Scalar(0, 255, 0), 3, 8, false);
 
                     // Draw the contours of the image and the convex hulls on the drawing image and gray
-                    drawContours(drawing, contours, i, Scalar(255, 255, 0), 2, 8, vector<Vec4i>(), 0, Point());
-                    drawContours(drawing, hullPoint, i, Scalar(255, 255, 0), 1, 8, vector<Vec4i>(), 0, Point());
+                    drawContours(drawing, contours, i, Scalar(0, 255, 0), 2, 8, vector<Vec4i>(), 0, Point());
+                    drawContours(drawing, hullPoint, i, Scalar(0, 255, 255), 1, 8, vector<Vec4i>(), 0, Point());
                     drawContours(imgGray, hullPoint, i, Scalar(0, 0, 255), 2, 8, vector<Vec4i>(), 0, Point());
                     // Approximate the polygon shape
                     approxPolyDP(contours[i], conPoly[i], 3, false);
