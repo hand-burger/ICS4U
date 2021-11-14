@@ -6,13 +6,12 @@
 using namespace cv;
 using namespace std;
 
-// Basic Functions \\
+// Basic Functions
 
 int main()
 {
     string path = "/Users/jack/Documents/OpenCV/OpenCV/Resources/test.png";
 
-    // Mat is matrix data type
     Mat img = imread(path);
     Mat imgGray, imgBlur, imgCanny, imgDia, imgErode;
 

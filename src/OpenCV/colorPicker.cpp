@@ -6,7 +6,7 @@
 using namespace cv;
 using namespace std;
 
-// Webcam Color Detection for Project 1 \\
+// Webcam Color Detection for Project 1
 
 int main()
 {

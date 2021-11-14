@@ -6,17 +6,15 @@
 using namespace cv;
 using namespace std;
 
-// Resize & Crop \\
+// Resize & Crop
 
 int main()
 {
     string path = "/Users/jack/Documents/OpenCV/OpenCV/Resources/test.png";
 
-    // Mat is matrix data type
     Mat img = imread(path);
     Mat imgResize, imgCrop;
 
-    //    cout << img.size();
     resize(img, imgResize, Size(), 0.5, 0.5);
 
     // Crop to these dimensions

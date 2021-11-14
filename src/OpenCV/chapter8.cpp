@@ -7,7 +7,7 @@
 using namespace cv;
 using namespace std;
 
-// Face Detection \\
+// Face Detection
 
 int main()
 {

@@ -6,7 +6,7 @@
 using namespace cv;
 using namespace std;
 
-// Importing Images \\
+// Importing Images
 
 int main()
 {
@@ -20,10 +20,9 @@ int main()
     return 0;
 }
 
-Importing Videos \
+// Importing Videos
 
-    int
-    main()
+int main()
 {
     string path = "/Users/jack/Documents/OpenCV/OpenCV/Resources/test_video.mp4";
     VideoCapture cap(path);
@@ -40,10 +39,9 @@ Importing Videos \
     return 0;
 }
 
-Webcam \
+// Webcam
 
-    int
-    main()
+int main()
 {
     // 0 is the id number of the camera
     VideoCapture cap(0);

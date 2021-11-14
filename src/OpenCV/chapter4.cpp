@@ -6,7 +6,7 @@
 using namespace cv;
 using namespace std;
 
-// Draw Shapes & Text \\
+// Draw Shapes & Text
 
 int main()
 {

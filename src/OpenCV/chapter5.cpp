@@ -6,13 +6,12 @@
 using namespace cv;
 using namespace std;
 
-// Warp Perspective \\
+// Warp Perspective
 
 int main()
 {
     string path = "/Users/jack/Documents/OpenCV/OpenCV/Resources/cards.jpg";
 
-    // Mat is matrix data type
     Mat img = imread(path);
 
     Mat matrix, imgWarp;

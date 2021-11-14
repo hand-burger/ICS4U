@@ -6,7 +6,7 @@
 using namespace cv;
 using namespace std;
 
-// Shape Detection \\
+// Shape Detection
 
 void getContours(Mat imgDil, Mat img)
 {
