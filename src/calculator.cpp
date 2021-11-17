@@ -44,7 +44,7 @@ int main()
             break;
         }
 
-        // Output result
+        // Output the result
         cout << "Result: " << result << endl;
         cout << "Would you like to perform additional calculations (y/n): ";
         cin >> operation;
