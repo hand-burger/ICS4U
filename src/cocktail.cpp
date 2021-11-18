@@ -39,6 +39,7 @@ int main()
     }
 
     // Print the output array
+    cout << "Sorted array: ";
     for (int i = 0; i < numElements; i++)
     {
         cout << inputArray[i] << " ";

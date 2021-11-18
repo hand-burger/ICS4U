@@ -8,10 +8,10 @@ int main()
     cout << "Enter your word: ";
     cin >> word;
 
-    // Word to lower case, since otherwise Racecar would not be a palindrome but racecar would be
-    for (auto &c : word)
+    // Word to lower case, since palindromes are not case sensitive
+    for (int i = 0; i < word.length(); i++)
     {
-        c = tolower(c);
+        word[i] = tolower(word[i]);
     }
 
     // Reverse the word

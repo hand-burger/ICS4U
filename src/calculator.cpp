@@ -18,7 +18,7 @@ int main()
     do
     {
         // Prompt user for input
-        cout << "Enter two numbers and an operation (+ - / * %): ";
+        cout << "Enter two numbers and an operation in one line (+ - / * %): ";
         cin >> num1 >> operation >> num2;
 
         // Perform operation
@@ -45,9 +45,9 @@ int main()
         }
 
         // Output the result
-        cout << "Result: " << result << endl;
+        cout << "Equals: " << result << endl;
         cout << "Would you like to perform additional calculations (y/n): ";
         cin >> operation;
-    } while (operation != 'n');
+    } while (operation != 'n' && operation == 'y');
     return 0;
 }
