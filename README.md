@@ -27,4 +27,4 @@ Grade 12 Computer Science intro projects solutions
 
 ## Summative Project
 
-[Details here](http://mrvarsava.weebly.com/uploads/1/4/8/7/14872890/ics34summative.pdf)
+[Details](http://mrvarsava.weebly.com/uploads/1/4/8/7/14872890/ics34summative.pdf)
