@@ -1,4 +1,4 @@
-import math  # For square root
+import math  # For using square root
 
 print('Enter cubic coefficients: ', end='')
 
