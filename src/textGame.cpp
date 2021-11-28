@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream> // For files
-#include <cmath>   // For rounding
+#include <cmath>   // For position rounding
 
 using namespace std;
 
