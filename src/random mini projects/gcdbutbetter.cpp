@@ -1,18 +1,7 @@
 #include <iostream>
+#include "gcd.hpp"
 
 using namespace std;
-
-// Recursive GCD function
-int gcd(int a, int b)
-{
-    // Base case
-    if (b == 0)
-    {
-        return a;
-    }
-    // Recursive case
-    return (gcd(b, a % b));
-}
 
 int main()
 {
