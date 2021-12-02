@@ -1,3 +1,5 @@
+// GCD header function
+
 int gcd(int a, int b)
 {
     if (b == 0)
