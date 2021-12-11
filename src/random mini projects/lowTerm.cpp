@@ -1,6 +1,4 @@
 #include <iostream>
-#include <cmath>
-#include <cstdlib>
 
 using namespace std;
 
@@ -20,6 +18,6 @@ void lowTerm(double *fraction)
 
 int main()
 {
-    double fraction[2] = {63, 100};
+    double fraction[2] = {6, 12};
     lowTerm(fraction);
 }
