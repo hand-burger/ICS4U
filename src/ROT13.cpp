@@ -27,7 +27,7 @@ int main()
     // Loop over each character in text
     // If character is a letter, add or subtract 13 to the character's ASCII value
     // If character is not a letter, do nothing to the character's ASCII value
-    for (int i = 0; i < text.length(); i++)
+    for (size_t i = 0; i < text.length(); ++i)
     {
         if (text[i] >= 'a' && text[i] <= 'z')
         {

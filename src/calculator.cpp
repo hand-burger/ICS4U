@@ -14,6 +14,8 @@ int main()
     // Declare variables
     int num1, num2, result;
     char operation;
+    // Invalid input flag
+    bool invalid = false;
 
     do
     {
@@ -40,14 +42,18 @@ int main()
             result = num1 % num2;
             break;
         default:
+            invalid = true;
             cout << "Invalid operation.\n";
-            break;
         }
 
-        // Output the result
-        cout << "Equals: " << result << endl;
+        // Output the result if operation was valid
+        if (!invalid)
+        {
+            cout << "Equals: " << result << endl;
+        }
         cout << "Would you like to perform additional calculations (y/n): ";
         cin >> operation;
+        // Check if user wants to continue
     } while (operation != 'n' && operation == 'y');
     return 0;
 }

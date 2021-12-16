@@ -17,7 +17,7 @@ void save(string saveFile, int pos[], bool inventory[])
     ofstream file(saveFile);
     file << pos[0] << "\n";
     file << pos[1] << "\n";
-    for (int i = 0; i < 5; i++)
+    for (size_t i = 0; i < 5; ++i)
     {
         file << inventory[i];
         // If on the last line don't put a newline
@@ -33,9 +33,9 @@ void drawBoard(int boardY, int boardX, int pos[])
 {
     // Take in the defined size of the board (Which can be modified and you already know the position of the objects scales to the size)
     // and draw the board, using the pos to mark current position with |XX|
-    for (int i = 0; i < boardY; i++)
+    for (size_t i = 0; i < boardY; ++i)
     {
-        for (int j = 0; j < boardX; j++)
+        for (size_t j = 0; j < boardX; ++j)
         {
             // If on starting pos, draw XX.
             if (i == pos[1] && j == pos[0])
@@ -71,16 +71,16 @@ void position(int pos[], int objects[5][2], bool inventory[])
     cout << "(" << pos[0] << ", " << pos[1] << ")" << endl;
 
     // Get pos as string
-    for (int i = 0; i < 2; i++)
+    for (size_t i = 0; i < 2; ++i)
     {
         stringPos += to_string(pos[i]);
     }
 
     cout << endl;
 
-    for (int i = 0; i < 5; i++)
+    for (size_t i = 0; i < 5; ++i)
     {
-        for (int j = 0; j < 2; j++)
+        for (size_t j = 0; j < 2; ++j)
         {
             // Get objects as string
             stringObj += to_string(objects[i][j]);
@@ -261,7 +261,7 @@ int main()
         pos[0] = stoi(readText);
         getline(newFin, readText);
         pos[1] = stoi(readText);
-        for (int i = 0; i < 5; i++)
+        for (size_t i = 0; i < 5; ++i)
         {
             getline(newFin, readText);
             if (readText == "0")
@@ -299,7 +299,7 @@ int main()
         }
         // Check for win (loop over each inventory element and if any of them are false, break
         // otherwise check if the loop can complete which means all are true)
-        for (int i = 0; i < 5; i++)
+        for (size_t i = 0; i < 5; ++i)
         {
             if (!inventory[i])
             {

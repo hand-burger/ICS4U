@@ -5,11 +5,11 @@ using namespace std;
 int main()
 {
     string word;
-    cout << "Enter your word: ";
+    cout << "Enter a word: ";
     cin >> word;
 
     // Word to lower case, since palindromes are not case sensitive
-    for (int i = 0; i < word.length(); i++)
+    for (size_t i = 0; i < word.length(); ++i)
     {
         word[i] = tolower(word[i]);
     }

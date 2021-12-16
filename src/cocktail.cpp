@@ -13,7 +13,7 @@ int main()
 
     int inputArray[numElements];
 
-    for (int i = 0; i < numElements; i++)
+    for (size_t i = 0; i < numElements; ++i)
     {
         // Enter each element of the array
         cout << "Enter element " << i + 1 << ": ";
@@ -24,9 +24,9 @@ int main()
 
     // Loop up and down input array
 
-    for (int i = 0; i < numElements - 1; i++)
+    for (size_t i = 0; i < numElements - 1; ++i)
     {
-        for (int j = 0; j < numElements - i - 1; j++)
+        for (size_t j = 0; j < numElements - i - 1; ++j)
         {
             // If the element is greater than the next element, swap them
             if (inputArray[j] > inputArray[j + 1])
@@ -40,7 +40,7 @@ int main()
 
     // Print the output array
     cout << "Sorted array: ";
-    for (int i = 0; i < numElements; i++)
+    for (size_t i = 0; i < numElements; ++i)
     {
         cout << inputArray[i] << " ";
     }
