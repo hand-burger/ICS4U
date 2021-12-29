@@ -163,7 +163,7 @@ void track(int, void *)
                         a = "0";
                     }
 
-                    // Put the number of fingers on the image
+                    // Put the estimated number of fingers on the image
                     putText(imgMirror, a, Point(75, 420), FONT_HERSHEY_SIMPLEX, 3, Scalar(0, 255, 0), 3, 8, false);
 
                     // Draw the contours of the image and the convex hulls on the drawing image and gray
