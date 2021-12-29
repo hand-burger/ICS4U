@@ -57,7 +57,10 @@ int main()
                 riceBalls.erase(riceBalls.begin() + i + 1);
                 // Erase the third rice ball (i + 2)
                 riceBalls.erase(riceBalls.begin() + i + 2);
-                compares -= 2;
+                if (compares > 1)
+                {
+                    compares -= 2;
+                }
             }
         }
         // Print the largest rice ball
