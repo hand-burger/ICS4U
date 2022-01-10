@@ -167,11 +167,15 @@ int main()
     float boardX, boardY;
     bool inventory[5] = {false, false, false, false, false};
 
-    cout << "\n|||||||||||||||||||||||||||||" << endl;
-    cout << "||                         ||" << endl;
-    cout << "||     DUNGEON FREEDOM     ||" << endl;
-    cout << "||                         ||" << endl;
-    cout << "|||||||||||||||||||||||||||||" << endl;
+    cout << "\n (                                      (                                 " << endl;
+    cout << " )\\ )                                   )\\ )              (               " << endl;
+    cout << "(()/(    (        (  (    (            (()/( (     (   (  )\\ )       )    " << endl;
+    cout << " /(_))  ))\\  (    )\\))(  ))\\ (   (      /(_)))(   ))\\ ))\\(()/( (    (     " << endl;
+    cout << "(_))_  /((_) )\\ )((_))\\ /((_))\\  )\\ )  (_))_(()\\ /((_/((_)((_)))\\   )\\  ' " << endl;
+    cout << " |   \\(_))( _(_/( (()(_(_)) ((_)_(_/(  | |_  ((_(_))(_))  _| |((_)_((_))  " << endl;
+    cout << " | |) | || | ' \\)/ _` |/ -_/ _ | ' \\)) | __|| '_/ -_/ -_/ _` / _ | '  \\() " << endl;
+    cout << " |___/ \\_,_|_||_|\\__, |\\___\\___|_||_|  |_|  |_| \\___\\___\\__,_\\___|_|_|_|  " << endl;
+    cout << "                 |___/                                                    " << endl;
 
     cout << "\nEnter the name of previous save file or create a new one: ";
     cin >> saveFile;

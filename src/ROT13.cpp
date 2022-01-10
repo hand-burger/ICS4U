@@ -12,7 +12,7 @@ int main()
 
     ifstream fin("source.txt");
 
-    // Loop over each line to add to the whole text
+    // Loop over each line to add to the whole text variable
 
     while (getline(fin, readText))
     {

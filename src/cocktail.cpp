@@ -11,6 +11,7 @@ int main()
     cout << "Enter the number of elements: ";
     cin >> numElements;
 
+    // Create an array of integers with the size of numElements
     int inputArray[numElements];
 
     for (size_t i = 0; i < numElements; ++i)

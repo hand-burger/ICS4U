@@ -14,7 +14,7 @@ int main()
     // Declare variables
     int num1, num2, result;
     char operation;
-    // Invalid input flag
+    // Flag for invalid input
     bool invalid = false;
 
     do
