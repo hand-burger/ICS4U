@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>A2C: Well, That's not Optimal</title>
+	
+	<style>
+		td {
+			padding: 5px;
+			text-align: center;
+			}
+			
+		td.numerator {
+			border-bottom: 1px solid black;
+		}
+		
+		li {
+			margin: 10px;
+		}
+	</style>
+</head>
+
+
+
+<body>
+
+<script language="JavaScript">
+
+	
+	var first_name = prompt("Enter first name:");
+	var last_name = prompt("Enter last name:");
+	
+	
+	
+	function letterValue (character) {
+		
+		var upper_alphabet = "_ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		var lower_alphabet = "_abcdefghijklmnopqrstuvwzyz";
+		
+        // If it is in upper alphabet, return the index of the character in upper alphabet
+		if (upper_alphabet.indexOf(character) != -1) {
+			return upper_alphabet.indexOf(character);
+			}
+        // If it is in lower alphabet, return the index of the character in lower alphabet
+		else {
+			return lower_alphabet.indexOf(character);
+		}	
+	}
+	
+    // A is the letter value of the first letter of the first name
+	var A = letterValue(first_name.substr(0,1));
+    // B is the letter value of the second letter of the first name
+	var B = letterValue(first_name.substr(1,1));
+    // C is the letter value of the second last letter of the first name
+	var C = letterValue(first_name.substr(first_name.length-2,1));
+    // D is the letter value of the last letter of the first name
+	var D = letterValue(first_name.substr(first_name.length-1,1));
+    // E is the letter value of the first letter of the last name
+	var E = letterValue(last_name.substr(0,1));
+    // F is the letter value of the second letter of the last name
+	var F = letterValue(last_name.substr(1,1));
+    // G is the letter value of the second last letter of the last name
+	var G = letterValue(first_name.substr(first_name.length-2,1));
+    // H is the letter value of the last letter of the last name
+	var H = letterValue(last_name.substr(last_name.length-1,1));
+	
+	document.write("Your first name is [<strong>" + first_name +"</strong>]");
+	document.write("<br />Your last name is [<strong>" + last_name+"</strong>]");
+	
+	
+	
+	document.write("<h2>Assignment 2C - Well, that's not Optimal</h2>");
+	
+	document.write("<p>Complete one (1) curve sketch [10 points] and two (2) optimization problems [7 points each].<br /> One (1) additional point will be awarded based on the level of difficulty you select.</p>");
+	
+	
+	document.write("<ol>");
+	
+	document.write("<h3>Part A: Sketchy Behaviour</h3>");
+	// Problem 1
+	
+	var r_1, r_2, r_3;
+	
+	if (A < 5) {
+		r_1 = A - 5;
+		r_2 = A;
+		r_3 = A + 3;
+		}
+	else if (A < 10) {
+		r_1 = A - 8;
+		r_2 = A - 5;
+		r_3 = A;
+	}
+	else if (A < 15) {
+		r_1 = A - 8;
+		r_2 = A;
+		r_3 = A + 7;
+	}
+	else {
+		r_1 = A - 15;
+		r_2 = A - 8;
+		r_3 = A;
+	}
+	
+	
+	
+	var a_3 = 1;
+	var a_2 = -1*(r_1 + r_2 + r_3);
+	var a_1 = (r_1*r_2 + r_1*r_3 + r_2*r_3);
+	var a_0 = -1*(r_1*r_2*r_3);
+	
+	document.write("<li>");
+	document.write("Sketch the graph of x<sup>3</sup>");
+	if (a_2 < 0) 
+    {
+        document.write(" - ");
+    }
+	else 
+    {
+        document.write(" + ");
+    }
+	document.write(Math.abs(a_2) + "x<sup>2</sup>");
+	if (a_1 < 0) 
+    {
+        document.write(" - ");
+    }
+	else 
+    {
+        document.write(" + ");
+    }
+	document.write(Math.abs(a_1) + "x");
+	if (a_0 < 0) 
+    {
+        document.write(" - ");
+    }
+	else 
+    {
+        document.write(" + ");
+    }
+	document.write(Math.abs(a_0));
+	document.write("</li>");
+	
+	
+	// Problem 2
+		
+	document.write("<li>");
+	document.write("Sketch the graph of ");
+	document.write("<table><tr><td class=\"numerator\">");
+	document.write("x<sup>3</sup> - ");
+	document.write(B*B + "x</td></tr><tr><td>x<sup>2</sup> - ");
+	document.write(Math.pow(B+1, 2));
+	document.write("</td></tr></table></li>");
+	
+	
+	document.write("<h3>Part B: The Only Thing I can Maximize is my Credit Limit</h3>");
+	
+	// Problem 3
+	
+	var mod4 = Math.ceil(((H/4) - Math.floor(H/4))*4);
+	
+	document.write("<li>");
+	if (mod4 == 0) {document.write("Two positive numbers have a product of " + E*F + ". Minimize the sum the squares of the two numbers.");}
+	else if (mod4 == 1) {document.write("Two positive numbers have a sum of " + E*F + ". Maximize the product of the numbers.");}
+	else if (mod4 == 2) {document.write("Two positive numbers have a sum of " + E*F + ". Minimize the sum the of one number and the reciprocal of the other.");}
+	else {document.write("Two positive numbers have a product of " + E*F + ". Minimize the sum of the two numbers.");}
+	document.write("</li>");
+	
+	
+	// Problem 4
+	document.write("<li>");
+	document.write("<img src=\"beach.gif\" align=\"right\" />");	
+	document.write("The piping plovers have returned to Sauble Beach and an area is being fenced off for their protection. ");
+	document.write("The edge of the fence will be parallel to the road, and the remaining sides will be perpendicular to the road. ");
+	document.write("However, the shoreline is <em>not</em> perfectly parallel to the road; the angle between the fence and the edge of the beach is approximately " + (90 - Math.abs(E-F)/2) + "&deg;. ");
+	document.write("If there is " + (A+C+F+H)*10 + "ft of fencing available, determine the largest area that can be enclosed.");
+	document.write("<br clear=\"all\"></li>");
+	
+
+	// Problem 5
+	document.write("<li>");
+	document.write("<img src=\"pool.png\" align=\"right\" />");	
+	document.write("A room that will contain an indoor pool consists of three straight walls plus a semi-circular glass wall. ");
+	document.write("The glass costs $" + (C+D+E)/2 + " per metre and the concrete costs $" + (C+D+G)/2 + " per metre. ");
+	document.write("If the area of the room is to be " + (10 + F + B) + "m<sup>2</sup>, determine the dimensions that minimize the cost of the room.");
+	document.write("<br clear=\"all\"></li>");
+	
+	// Problem 6
+	document.write("<li>");
+	document.write("As part of the Mustang Mudder, participants must run from one corner to the diagonally opposite corner of a field that is " + (A+C+E+G) + "m long and " + (B+D+F+H) + "m wide. ");
+	document.write("The first third of the length of the field is mud, while the remaining two-thirds is grass. ");
+	document.write("If a participant runs 20% slower in the mud than on the grass, determine the optimal route to cross the field. ");
+	document.write("(Warning: when finding critical points in this question, you many encounter an unfactorable polynomial. You may use technology to find its roots.)");
+	document.write("</li>");
+	
+</script>
+
+
+
+
+
+
+
+</body>
+
+
+</html>
